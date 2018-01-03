@@ -91,10 +91,17 @@ alias l='ls -CF'
 alias s='sudo'
 alias sagi='sudo apt-get install'
 alias g='git'
+alias ga='git add'
+alias gb='git branch'
 alias gc='git commit'
 alias gcm='git commit -m'
-alias ga='git add'
+alias gco='git checkout'
+alias gp='git push'
 alias gst='git status'
+
+alias p='python3'
+alias p2.7='python2.7'
+alias p3='python3'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
