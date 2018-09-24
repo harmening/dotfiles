@@ -83,13 +83,21 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
+
+# Alias definitions
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
 alias s='sudo'
 alias sagi='sudo apt-get install'
+
+alias trash='rmtrash'
+alias del='rmtrash'
+
 alias g='git'
 alias ga='git add'
 alias gb='git branch'
@@ -108,13 +116,8 @@ alias p3='python3'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -138,3 +141,4 @@ export PYTHONDONTWRITEBYTECODE=1
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export PATH=~/bin:$PATH
+export JAVA_HOME=$(/usr/libexec/java_home)

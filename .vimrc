@@ -27,6 +27,11 @@ set autoread
 set hidden
 set history=10000
 set clipboard=unnamedplus
+"if system('uname -s') == "Darwin\n"
+"  set clipboard=unnamed "OSX
+"else
+"  set clipboard=unnamedplus "Linux
+"endif
 "set foldmethod=indent
 "set foldnestmax=10
 "set nofoldenable
@@ -38,3 +43,6 @@ set guioptions-=l "remove left-hand scroll bar
 set guifont="Monospace Regular 8"
 filetype plugin indent on
 syntax on
+
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>

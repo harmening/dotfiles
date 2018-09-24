@@ -1,0 +1,7 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+name = harmening
+email = nils.harmening@mail.de
+[core]
+	excludesfile = /Users/nils/.gitignore_global
