@@ -1,6 +1,6 @@
 set term=screen-256color
 set t_Co=256
-call pathogen#infect()
+execute pathogen#infect()
 syntax enable
 set encoding=utf-8
 

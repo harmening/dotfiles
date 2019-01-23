@@ -88,13 +88,23 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias trash='rmtrash'
+alias del='rmtrash'
+
 alias s='sudo'
 alias sagi='sudo apt-get install'
 alias g='git'
+alias ga='git add'
+alias gb='git branch'
 alias gc='git commit'
 alias gcm='git commit -m'
-alias ga='git add'
+alias gco='git checkout'
+alias gp='git push'
 alias gst='git status'
+
+alias p='python3'
+alias p2.7='python2.7'
+alias p3='python3'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -120,6 +130,16 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PYTHONSTARTUP=~/.pythonrc 
-PYTHONPATH="${PYTHONPATH}.:~/Documents/pyunicorn/:~/Documents/numpy/"
-export PYTHONPATH
+if [ -f ~/.pythonrc ]; then
+  export PYTHONSTARTUP=~/.pythonrc 
+fi
+#PYTHONPATH="${PYTHONPATH}.:~/Documents/pyunicorn/:~/Documents/numpy/"
+#export PYTHONPATH
+export PYTHONDONTWRITEBYTECODE=1
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export PATH=~/bin:$PATH
+
+# added by travis gem
+[ -f /Users/nils/.travis/travis.sh ] && source /Users/nils/.travis/travis.sh
