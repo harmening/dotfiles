@@ -26,12 +26,11 @@ set textwidth=79
 set autoread
 set hidden
 set history=10000
-set clipboard=unnamedplus
-"if system('uname -s') == "Darwin\n"
-"  set clipboard=unnamed "OSX
-"else
-"  set clipboard=unnamedplus "Linux
-"endif
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
 "set foldmethod=indent
 "set foldnestmax=10
 "set nofoldenable
