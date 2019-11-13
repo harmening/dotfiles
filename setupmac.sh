@@ -16,6 +16,10 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # install nerdtree
 git clone https://github.com/scrooloose/nerdtree.git ~/.vim/bundle/nerdtree
+# install julia support
+git clone https://github.com/JuliaEditorSupport/julia-vim.git ~/.vim/bundle/julia-vim
+
+
 
 # physics
 brew install gnuplot
@@ -51,6 +55,9 @@ brew install swig
 brew install openblas
 export LDFLAGS="-L/usr/local/opt/openblas/lib"
 export CPPFLAGS="-I/usr/local/opt/openblas/include"
+xcode-select --install
+open /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg
+
 brew install llvm # for OpenMP
 echo 'export PATH="/usr/local/opt/llvm/bin:$PATH"' >> ~/.bashrc
 export LDFLAGS="-L/usr/local/opt/llvm/lib"
@@ -58,19 +65,28 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 ln -s /usr/local/opt/llvm/bin/clang /usr/local/bin/clang-omp # create symlinks
 ln -s /usr/local/opt/llvm/bin/clang++ /usr/local/bin/clang-omp++
 brew install libomp
-git clone https://github.com/openmeeg/openmeeg.gi://github.com/openmeeg/openmeeg.git
+git clone https://github.com/harmening/openmeeg
 cd openmeeg
+git checkout python-wrapping-for-mac
 mkdir build
 cd build
 # maybe you need to add a few lines to CMakeLists.txt (https://stackoverflow.com/questions/46414660/macos-cmake-and-openmp)
-CC=clang-omp CXX=clang-omp++ cmake  -DCMAKE_BUILD_TYPE=Release -DUSE_PROGRESSBAR=ON -DENABLE_PYTHON=ON -DBLA_VENDOR=OpenBLAS -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I$(brew --prefix libomp)/include" -DOpenMP_CXX_LIB_NAMES="omp" -DOpenMP_omp_LIBRARY=$(brew --prefix libomp)/lib/libomp.a ..
+CC=clang-omp CXX=clang-omp++ cmake -DCMAKE_BUILD_TYPE=Release -DUSE_PROGRESSBAR=ON -DBLA_VENDOR=OpenBLAS -DOpenMP_C_FLAGS="-fopenmp=libomp -Wno-unused-command-line-argument" -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp -I$(brew --prefix libomp)/include" -DOpenMP_CXX_LIB_NAMES="omp" -DOpenMP_omp_LIBRARY=$(brew --prefix libomp)/lib/libomp.a ..
 make
 make test
 make install
+# cd /usr/local/Library/Python/2.7/site-packages
+# install_name_tool -add_rpath /usr/local/lib/ _openmeeg.so
 cd ~/Projects
 git clone https://github.com/fieldtrip/fieldtrip.git
 # matlab addpath '~/Projects/fieldtrip'
 
+# matlab engine api for python
+# cd /Applications/MATLAB_R2018b.app/extern/engines/python/
+# python2.7 setup.py install
+
+git clone https://github.com/mne-tools/mne-python.git
+pip install --upgrade "pyqt5>=5.10"
 
 #python
 #brew install python
@@ -96,6 +112,8 @@ brew install python3
 pip3 install cython
 pip3 install numpy
 pip3 install scipy
+pip3 install sklearn
+pip3 install h5py
 pip3 install pytest
 pip3 install pytest-flake8
 pip3 install pytest-cov
@@ -106,9 +124,20 @@ pip3 install matplotlib
 pip3 install jupyter
 
 #pip3 install mpi4py
-
+brew cask install julia
+brew cask install docker
 brew cask install slack
 brew cask install firefox
+brew cask install osxfuse
+brew cask install veracrypt
+brew cask install dropbox
+
+brew install sl
+
+# Live Coding / Algorave 
+brew cask install supercollider
+pip install FoxDot
+
 
 exit 0
 
@@ -123,4 +152,6 @@ x-help-action://openPrefPane?bundleId=com.apple.preference.trackpad
 # profile pic
 # mail accounts
 # finder preferences
+# night shift
+
 
