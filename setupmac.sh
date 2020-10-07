@@ -24,28 +24,28 @@ git clone https://github.com/JuliaEditorSupport/julia-vim.git ~/.vim/bundle/juli
 # physics
 brew install gnuplot
 brew cask install gimp
-brew cask install mactex
+brew cask install mactex-no-gui
 
 # latex
-sudo cp tex/* /usr/local/texlive/2017/texmf-dist/tex/
-texhash
+#sudo cp tex/* /usr/local/texlive/2018/texmf-dist/tex/
+#texhash
 
 cd ~
 # Install ssh-ident
 mkdir -p ~/bin; wget -O ~/bin/ssh goo.gl/MoJuKB; chmod 0755 ~/bin/ssh
-echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
+#echo 'export PATH=~/bin:$PATH' >> ~/.bashrc
 #ls -la .ssh
-ssh-keygen -t rsa -b 4096 -C "nils.harmening@mail.de"
+#ssh-keygen -t rsa -b 4096 -C "nils.harmening@mail.de"
 
 # git projects
-mkdir Projects
-cd Projects
-git clone git@github.com:harmening/dotfiles.git
-cp dotfiles/* ~
-git clone git@github.com:harmening/pyunicorn.git
-git clone git@github.com:harmening/harmening.github.io.git
-git clone git@github.com:harmening/phrase-frequency-counter.git
-git clone git@github.com:harmening/signature_extraction.git
+#mkdir Projects
+#cd Projects
+#git clone git@github.com:harmening/dotfiles.git
+#cp dotfiles/* ~
+#git clone git@github.com:harmening/pyunicorn.git
+#git clone git@github.com:harmening/harmening.github.io.git
+#git clone git@github.com:harmening/phrase-frequency-counter.git
+#git clone git@github.com:harmening/signature_extraction.git
 
 # C
 brew install cmake
@@ -65,7 +65,7 @@ export CPPFLAGS="-I/usr/local/opt/llvm/include"
 ln -s /usr/local/opt/llvm/bin/clang /usr/local/bin/clang-omp # create symlinks
 ln -s /usr/local/opt/llvm/bin/clang++ /usr/local/bin/clang-omp++
 brew install libomp
-git clone https://github.com/harmening/openmeeg
+#git clone https://github.com/harmening/openmeeg
 cd openmeeg
 git checkout python-wrapping-for-mac
 mkdir build
@@ -78,21 +78,21 @@ make install
 # cd /usr/local/Library/Python/2.7/site-packages
 # install_name_tool -add_rpath /usr/local/lib/ _openmeeg.so
 cd ~/Projects
-git clone https://github.com/fieldtrip/fieldtrip.git
+#git clone https://github.com/fieldtrip/fieldtrip.git
 # matlab addpath '~/Projects/fieldtrip'
 
 # matlab engine api for python
 # cd /Applications/MATLAB_R2018b.app/extern/engines/python/
 # python2.7 setup.py install
 
-git clone https://github.com/mne-tools/mne-python.git
-pip install --upgrade "pyqt5>=5.10"
+#git clone https://github.com/mne-tools/mne-python.git
+#pip install --upgrade "pyqt5>=5.10"
 
 #python
 #brew install python
-#pip2 install cython
-#pip2 install numpy
-#pip2 install scipy
+pip2 install cython
+pip2 install numpy
+pip2 install scipy
 #pip2 install pytest
 #pip2 install pytest-flake8
 #pip2 install pytest-cov
@@ -131,6 +131,10 @@ brew cask install firefox
 brew cask install osxfuse
 brew cask install veracrypt
 brew cask install dropbox
+brew cask install gimp
+#brew cask install skype
+#brew cask install matlab
+#brew cask install veracrypt
 
 brew install sl
 

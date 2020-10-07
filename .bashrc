@@ -110,9 +110,21 @@ alias gco='git checkout'
 alias gp='git push'
 alias gst='git status'
 
+alias d='docker'
+alias db='docker build'
+alias dr='docker run'
+alias di='docker image'
+alias dils='docker images ls'
+alias dirm='docker image rm '
+
 alias p='python3'
 alias p2.7='python2.7'
 alias p3='python3'
+alias pip='pip3'
+
+alias matlab='/Applications/MATLAB_R2019b.app/bin/matlab'
+export SPM_PATH=/Applications/MATLAB_R2019b.app/bin/matlab/toolbox/spm12/
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -134,11 +146,14 @@ if ! shopt -oq posix; then
 fi
 
 if [ -f ~/.pythonrc ]; then
-  export PYTHONSTARTUP=~/.pythonrc 
+  export PYTHONSTARTUP=~/.pythonrc
+  #PYTHONPATH="${PYTHONPATH}.:~/Documents/pyunicorn/:~/Documents/numpy/"
 fi
 
 #PYTHONPATH="${PYTHONPATH}.:~/Documents/pyunicorn/:~/Documents/numpy/"
 #export PYTHONPATH
+#export PYTHONPATH="${PYTHONPATH}.:~/Documents/pyunicorn/:~/Documents/numpy/"
+#export PYTHONPATH="${PYTHONPATH}:/usr/local/lib/python2.7/site-packages/"
 export PYTHONDONTWRITEBYTECODE=1
 
 export LC_ALL=en_US.UTF-8
@@ -147,5 +162,28 @@ export PATH=~/bin:$PATH
 
 # added by travis gem
 [ -f /Users/nils/.travis/travis.sh ] && source /Users/nils/.travis/travis.sh
-# export java home
-export JAVA_HOME=$(/usr/libexec/java_home)
+
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+export FREESURFER_HOME=/Applications/freesurfer
+source $FREESURFER_HOME/SetUpFreeSurfer.sh
+FSLDIR=/usr/local/fsl
+. ${FSLDIR}/etc/fslconf/fsl.sh
+PATH=${FSLDIR}/bin:${PATH}
+export FSLDIR PATH
+
+# auto-inserted by @update.afni.binaries :
+export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:/opt/X11/lib/flat_namespace
+
+# set up tab completion for AFNI programs
+if [ -f $HOME/.afni/help/all_progs.COMP.bash ]
+then
+  . $HOME/.afni/help/all_progs.COMP.bash
+fi
+
+fortune | cowsay #| lolcat
+#alias snow=ruby -e 'C=`stty size`.scan(/\d+/)[1].to_i;S=["2743".to_i(16)].pack("U*");a={};puts "\033[2J";loop{a[rand(C)]=0;a.each{|x,o|;a[x]+=1;print "\033[#{o};#{x}H \033[#{a[x]};#{x}H#{S} \033[0;0H"};$stdout.flush;sleep 0.1}'
+
+export DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}:/opt/X11/lib/flat_namespace
+
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
